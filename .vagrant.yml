@@ -1,0 +1,31 @@
+---
+
+env:
+  default: &default          # 'default' will be merged below
+    gui: false
+    cpu: 2                   # number of cpus
+    memory: 2048             # amount of RAM memory
+    clone: true              # use the linked_clone Vagrant feature
+    autostart: false         # only start the VM specfied in the command line
+  vms:
+    windows10-x64:           # name of the VM
+      <<: *default           # referece of the common part
+      box: windows10-eval-x64-Apps
+    windows10-x86:           # name of the VM
+      <<: *default           # referece of the common part
+      box: windows10-eval-x86-Apps
+
+stages:
+  - setup
+  - test
+
+setup_job:
+  stage: setup
+  script:
+    - do.ps1 -c 'echo "Hello!"'
+
+test_job:
+  stage: test          # name of the stage
+  script:              # One line per command to execute
+    - do.ps1 -c 'dir c:\'
+

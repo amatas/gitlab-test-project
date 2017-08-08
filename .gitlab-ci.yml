@@ -1,0 +1,37 @@
+---
+
+cache:
+  key: "$CI_BUILD_REF_NAME"
+  untracked: true
+  paths:
+    - node_modules/
+
+stages:
+  - test_win10
+
+before_script:
+  - "mkdir -p ../.vagrant-$CI_BUILD_REF_NAME"
+  - rm -fr .vagrant
+  - "ln -s ../.vagrant-$CI_BUILD_REF_NAME .vagrant"
+
+after_script:
+  - vagrant destroy -f
+  - "rm -fr ../.vagrant-$CI_BUILD_REF_NAME"
+
+test_win10_x86_job:
+  stage: test_win10
+  script:
+    - vagrant up windows10-x86
+    - vagrant ci test windows10-x86
+  when: always
+  tags:
+    - box_build
+
+test_win10_x64_job:
+  stage: test_win10
+  script:
+    - vagrant up windows10-x64
+    - vagrant ci test windows10-x64
+  when: always
+  tags:
+    - box_build
