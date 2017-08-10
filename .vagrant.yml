@@ -10,10 +10,10 @@ env:
   vms:
     windows10-x64:           # name of the VM
       <<: *default           # referece of the common part
-      box: windows10-eval-x64-Apps
+      box: inclusivedesign/windows10-eval-x64-Apps
     windows10-x86:           # name of the VM
       <<: *default           # referece of the common part
-      box: windows10-eval-x86-Apps
+      box: inclusivedesign/windows10-eval-x86-Apps
 
 stages:
   - setup
