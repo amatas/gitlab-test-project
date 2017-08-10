@@ -24,8 +24,6 @@ test_win10_x86_job:
     - vagrant up windows10-x86
     - vagrant ci test windows10-x86
   when: always
-  tags:
-    - box_build
 
 test_win10_x64_job:
   stage: test_win10
@@ -33,5 +31,3 @@ test_win10_x64_job:
     - vagrant up windows10-x64
     - vagrant ci test windows10-x64
   when: always
-  tags:
-    - box_build
