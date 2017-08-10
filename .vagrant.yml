@@ -23,6 +23,7 @@ setup_job:
   stage: setup
   script:
     - do.ps1 -c 'echo "Hello!"'
+    - do.ps1 -c 'echo "Hello2!"'
 
 test_job:
   stage: test          # name of the stage
